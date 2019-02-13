@@ -2,4 +2,5 @@
 
 export const WORKER_TOPIC = {
   cpuIntensive: 'cpuIntensive',
+  cpuIntensiveExternal: 'cpuIntensiveExternal'
 };

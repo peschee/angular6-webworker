@@ -38,6 +38,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.workerService.doWork(workerMessage);
   }
 
+  processInWorkerExternal() {
+    this.iterations = 0;
+    const workerMessage = new WorkerMessage(WORKER_TOPIC.cpuIntensiveExternal, { duration: 3000 });
+    this.workerService.doWork(workerMessage);
+  }
+
   private cpuIntensiveCalc(duration: number) {
     const before = new Date();
     let count = 0;
@@ -57,7 +63,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private workerResponseParser(message: WorkerMessage) {
-    if (message.topic === this.workerTopic) {
+    if (message.topic === this.workerTopic || message.topic === WORKER_TOPIC.cpuIntensiveExternal) {
       this.iterations = message.data.iteration;
     }
   }

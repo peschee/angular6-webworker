@@ -1,6 +1,7 @@
 /* <project-root>/src/worker/app-workers/app.workers.ts */
 
 import { MockedCpuIntensiveWorker } from './mocked-cpu-intensive.worker';
+import { MockedCpuIntensiveWorkerExternal } from './mocked-cpu-intensive-external.worker';
 import { WorkerMessage } from './shared/worker-message.model';
 import { WORKER_TOPIC } from './shared/worker-topic.constants';
 
@@ -20,6 +21,9 @@ export class AppWorkers {
     switch (topic) {
       case WORKER_TOPIC.cpuIntensive:
         this.returnWorkResults(MockedCpuIntensiveWorker.doWork(workerMessage));
+        break;
+      case WORKER_TOPIC.cpuIntensiveExternal:
+        this.returnWorkResults(MockedCpuIntensiveWorkerExternal.doWork(workerMessage));
         break;
       default:  // Add support for other workers here
         console.error('Topic Does Not Match');
