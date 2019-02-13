@@ -4,7 +4,6 @@ import { WorkerMessage } from './shared/worker-message.model';
 export class MockedCpuIntensiveWorkerExternal {
 
   public static doWork(value: WorkerMessage): WorkerMessage {
-    console.log('worker message', value);
     const before = moment();
     let count = 0;
     while (true) {
