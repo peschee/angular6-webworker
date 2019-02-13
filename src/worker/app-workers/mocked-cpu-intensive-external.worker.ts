@@ -1,6 +1,9 @@
 import * as moment from 'moment';
 import { WorkerMessage } from './shared/worker-message.model';
 
+/**
+ * This is just an example that uses external libraries in a worker (Moment.js).
+ */
 export class MockedCpuIntensiveWorkerExternal {
 
   public static doWork(value: WorkerMessage): WorkerMessage {
